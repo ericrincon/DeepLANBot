@@ -5,23 +5,25 @@ import Model as models
 import numpy as np
 import sys
 import getopt
+import random
 
 from sklearn.feature_extraction.text import CountVectorizer
 
 def main():
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], '', ['nb_epochs='])
+        opts, args = getopt.getopt(sys.argv[1:], '', ['nb_epochs=', 'sample_size='])
     except getopt.GetoptError as error:
         print 'error'
         sys.exit(2)
 
     nb_epochs = 60
-
+    sample_size = 60000
     for opt, arg in opts:
         if opt == '--nb_epochs':
             nb_epochs = arg
-
+        elif opt == '--sample_size'
+            sample_size = int(arg)
 
     channels = read_messages('LAN Slack')
     text = []
@@ -33,15 +35,17 @@ def main():
 
                 messages = json.load(messages)
 
+
                 for message in messages:
-                    if 'text' in message.keys():
-                        text.append(message['text'] + "\n")
-    text = "".join(text)
-    #counts = CountVectorizer(text)
+                    rand = np.random.randint(low=0, high=10)
+                    if rand >= 8:
+                        if 'text' in message.keys():
+                            text.append(message['text'] + "\n")
 
+    sample = np.random.choice(text, sample_size, replace=False)
+    text = "".join(sample)
 
-
-   # print len(text)
+    print "Length of text: {}".format(len(text))
     maxlen = 40
     step = 3
 
