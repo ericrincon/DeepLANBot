@@ -7,7 +7,6 @@ import sys
 import getopt
 
 from sklearn.feature_extraction.text import CountVectorizer
-from pympler import asizeof
 
 def main():
 
@@ -25,7 +24,7 @@ def main():
 
 
     channels = read_messages('LAN Slack')
-    text = ""
+    text = []
 
     for channel in channels:
 
@@ -36,9 +35,8 @@ def main():
 
                 for message in messages:
                     if 'text' in message.keys():
-                        text += message['text'] + "\n"
-
-    print asizeof.asizeof(text)
+                        text.append(message['text'] + "\n")
+    text = "".join(text)
     #counts = CountVectorizer(text)
 
 
