@@ -1,0 +1,14 @@
+
+*.txt
+
+*.json
+
+*.xml
+
+*.iml
+
+.idea/.name
+
+*.pyc
+
+Test.py

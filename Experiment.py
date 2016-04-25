@@ -25,7 +25,7 @@ def main():
 
 
     channels = read_messages('LAN Slack')
-    text = []
+    text = ""
 
     for channel in channels:
 
@@ -33,9 +33,11 @@ def main():
             with open(file) as messages:
 
                 messages = json.load(messages)
+
                 for message in messages:
                     if 'text' in message.keys():
-                        text.append(message['text'])
+                        text += message['text'] + "\n"
+
     print asizeof.asizeof(text)
     #counts = CountVectorizer(text)
 
