@@ -7,6 +7,7 @@ import sys
 import getopt
 
 from sklearn.feature_extraction.text import CountVectorizer
+from pympler import asizeof
 
 def main():
 
@@ -35,7 +36,7 @@ def main():
                 for message in messages:
                     if 'text' in message.keys():
                         text.append(message['text'])
-
+    print asizeof.asizeof(text)
     #counts = CountVectorizer(text)
 
 
