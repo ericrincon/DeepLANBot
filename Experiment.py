@@ -22,7 +22,7 @@ def main():
     for opt, arg in opts:
         if opt == '--nb_epochs':
             nb_epochs = arg
-        elif opt == '--sample_size'
+        elif opt == '--sample_size':
             sample_size = int(arg)
 
     channels = read_messages('LAN Slack')
