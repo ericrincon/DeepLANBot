@@ -21,7 +21,7 @@ def main():
     sample_size = 60000
     for opt, arg in opts:
         if opt == '--nb_epochs':
-            nb_epochs = arg
+            nb_epochs = int(arg)
         elif opt == '--sample_size':
             sample_size = int(arg)
 
