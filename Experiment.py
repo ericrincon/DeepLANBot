@@ -6,6 +6,7 @@ import numpy as np
 import sys
 import getopt
 import random
+import pickle
 
 from sklearn.feature_extraction.text import CountVectorizer
 
@@ -52,9 +53,11 @@ def main():
     X, y, sentences, indices_char, char_indices, chars = preprocess_text(text, maxlen, step)
 
     s2s = models.Sequence2Sequence(maxlen, len(chars))
-    s2s.load_model('LANBot.h5')
     s2s.train(X, y, maxlen, chars, char_indices, indices_char, text, nb_epochs)
-
+    pickle.dump(chars, open('chars.p', 'w+'))
+    pickle.dump(char_indices, open('char_i.p', 'w+'))
+    pickle.dump(indices_char, open('i_char.p', 'w+'))
+    pickle.dump(text, open('text.p', 'w+'))
 
 
 def read_messages(dir):
