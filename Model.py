@@ -48,6 +48,7 @@ class Sequence2Sequence(object):
 
                 sys.stdout.write(next_char)
                 sys.stdout.flush()
+        self.model.save_weights('LANBot.h5')
 
 
 
