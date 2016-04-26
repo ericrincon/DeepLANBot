@@ -12,3 +12,5 @@
 *.pyc
 
 Test.py
+
+*.h5

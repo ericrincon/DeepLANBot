@@ -18,7 +18,7 @@ def main():
         sys.exit(2)
 
     nb_epochs = 60
-    sample_size = 60000
+    sample_size = 8000
     for opt, arg in opts:
         if opt == '--nb_epochs':
             nb_epochs = int(arg)
@@ -52,8 +52,8 @@ def main():
     X, y, sentences, indices_char, char_indices, chars = preprocess_text(text, maxlen, step)
 
     s2s = models.Sequence2Sequence(maxlen, len(chars))
+    s2s.load_model('LANBot.h5')
     s2s.train(X, y, maxlen, chars, char_indices, indices_char, text, nb_epochs)
-
 
 
 
